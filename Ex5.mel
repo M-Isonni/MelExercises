@@ -1,0 +1,23 @@
+string $winName = "TestWindow";
+if(`window -q -exists $winName`)
+{
+    deleteUI $winName;
+}
+window -s 0 $winName;
+window -e -h 80 -w 400 -s 0 $winName;
+
+columnLayout -adj 1;
+    $text = `text`;
+    text -e -l "NAME" $text;
+    string $tf;
+    $tf = `textField`;
+    
+    button -label "Greet Me" -command "GreetMe(`textField -q -tx $tf`, $text2)";;
+   
+    $text2 = `text`;    
+showWindow;
+
+proc GreetMe(string $name, string $textToEdit){ 
+string $newString = "Welcome "+ $name;   
+    text -e -l $newString $textToEdit;
+}

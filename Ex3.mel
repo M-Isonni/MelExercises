@@ -1,0 +1,7 @@
+$items = `ls -sl`;
+$ItemsNum = 0;
+for($i in $items){
+    $ItemsNum++;
+}
+
+print($ItemsNum);

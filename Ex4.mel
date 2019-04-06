@@ -1,0 +1,23 @@
+string $items[] = `ls -sl`;
+$MeshNum = 0;
+$JointsNum = 0;
+$TransformNum =0;
+for($it in $items){
+    string $type = `nodeType $it`;
+    if($type == "mesh")
+        {
+            $MeshNum++;
+        } 
+    if($type == "joint")
+        {
+            $JointsNum++;
+        }
+    if($type == "transform")
+        {
+            $TransformNum++;
+        }     
+}
+
+print("Mesh are: " +$MeshNum+ "\n");
+print("Transform are: " +$TransformNum+ "\n");
+print("Joints are: " +$JointsNum+ "\n");

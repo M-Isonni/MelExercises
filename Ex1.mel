@@ -1,0 +1,18 @@
+for($i = 0; $i < 3; $i++){
+    $sphere=`polySphere`;
+    $cube=`polyCube`;
+    move -r ($i*5) 0 0 $sphere;
+    move -r ($i*5) 3 0 $cube;      
+    $mat = `shadingNode -asShader lambert`;
+    if($i==2){
+        $mat = `shadingNode -asShader blinn`;
+        }
+    select -r $cube;
+    hyperShade -assign $mat;
+    string $color = $mat + ".color";
+    int $col[] = {0,0,0};
+    $col[$i]=1;
+    setAttr $color -type float3 $col[0] $col[1] $col[2];
+}
+
+
